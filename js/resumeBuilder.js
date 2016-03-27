@@ -38,11 +38,11 @@ var bio = {
             $("#header").append(HTMLskillsStart);
             var formattedSkills = HTMLskills.replace("%data%", bio.skills[0]);
             $("#skills").append(formattedSkills);
-            var formattedSkills = HTMLskills.replace("%data%", bio.skills[1]);
+            formattedSkills = HTMLskills.replace("%data%", bio.skills[1]);
             $("#skills").append(formattedSkills);
-            var formattedSkills = HTMLskills.replace("%data%", bio.skills[2]);
+            formattedSkills = HTMLskills.replace("%data%", bio.skills[2]);
             $("#skills").append(formattedSkills);
-            var formattedSkills = HTMLskills.replace("%data%", bio.skills[3]);
+            formattedSkills = HTMLskills.replace("%data%", bio.skills[3]);
             $("#skills").append(formattedSkills);
         }
     }
@@ -74,7 +74,7 @@ var work = {
         "description": "dummy text"
     }],
     "display": function() {
-        for (job in work.jobs) {
+        for (var job in work.jobs) {
             $("#workExperience").append(HTMLworkStart);
             var fomattedEmployer = HTMLworkEmployer.replace("%data%", work.jobs[job].employer).replace("#", work.jobs[job].url);
             var formattedTitle = HTMLworkTitle.replace("%data%", work.jobs[job].title);
@@ -119,7 +119,7 @@ var projects = {
         "other": ""
     }],
     "display": function() {
-        for (project in projects.projects) {
+        for (var project in projects.projects) {
             $("#projects").append(HTMLprojectStart);
             $(".project-entry:last").append(HTMLprojectTitle.replace("%data%", projects.projects[project].name).replace("#", projects.projects[project].url));
             $(".project-entry:last").append(HTMLprojectDates.replace("%data%", projects.projects[project].dates));
@@ -165,13 +165,13 @@ var education = {
     }],
     //display
     "display": function() {
-        for (edu in education.schools) {
+        for (var edu in education.schools) {
             $("#education").append(HTMLschoolStart);
             $(".education-entry:last").append(HTMLschoolName.replace("%data%", education.schools[edu].name).replace("#", education.schools[edu].url));
             $(".education-entry:last").append(HTMLschoolDegree.replace("%data%", education.schools[edu].degree));
             $(".education-entry:last").append(HTMLschoolDates.replace("%data%", education.schools[edu].dates));
             $(".education-entry:last").append(HTMLschoolLocation.replace("%data%", education.schools[edu].location));
-            for (major in education.schools[edu].majors) {
+            for (var major in education.schools[edu].majors) {
                 $(".education-entry:last").append(HTMLschoolMajor.replace("%data%", education.schools[edu].majors[major]));
             }
         }
