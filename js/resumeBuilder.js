@@ -24,14 +24,7 @@ var bio = {
 
         if (bio.skills.length > 0) {
             $("#header").append(HTMLskillsStart);
-            var formattedSkills = HTMLskills.replace("%data%", bio.skills[0]);
-            $("#skills").append(formattedSkills);
-            formattedSkills = HTMLskills.replace("%data%", bio.skills[1]);
-            $("#skills").append(formattedSkills);
-            formattedSkills = HTMLskills.replace("%data%", bio.skills[2]);
-            $("#skills").append(formattedSkills);
-            formattedSkills = HTMLskills.replace("%data%", bio.skills[3]);
-            $("#skills").append(formattedSkills);
+            $("#skills").append(HTMLskills.replace("%data%", bio.skills[0]),HTMLskills.replace("%data%", bio.skills[1]),HTMLskills.replace("%data%", bio.skills[2]),HTMLskills.replace("%data%", bio.skills[3]));
         }
         $("#footerContacts").append(HTMLmobile.replace("%data%", bio.contacts.mobile),HTMLemail.replace("%data%", bio.contacts.email),HTMLtwitter.replace("%data%", bio.contacts.twitter),HTMLgithub.replace("%data%", bio.contacts.github),HTMLblog.replace("%data%", bio.contacts.blog),HTMLlocation.replace("%data%", bio.contacts.location));
     }
@@ -130,7 +123,7 @@ projects.display();
 // education
 var education = {
     "schools": [{
-        "name": "NTHU",
+        "name": "National Tsing Hua University",
         "location": "Hsinchu, Taiwan",
         "degree": "B.S.",
         "majors": ["Quantitative Finance"],
@@ -140,7 +133,7 @@ var education = {
         "name": "Universitaet Tuebingen",
         "location": "Tuebingen, Germany",
         "degree": "Exchange student",
-        "majors": ["Economics", "BA"],
+        "majors": ["Economics & BA"],
         "date": "Sep. 2010 - Feb. 2011",
         "url": "https://www.uni-tuebingen.de/"
     }, {
@@ -162,9 +155,9 @@ var education = {
     "display": function() {
         for (var edu in education.schools) {
             $("#education").append(HTMLschoolStart);
-            $(".education-entry:last").append(HTMLschoolName.replace("%data%", education.schools[edu].name).replace("#", education.schools[edu].url));
-            $(".education-entry:last").append(HTMLschoolDegree.replace("%data%", education.schools[edu].degree));
-            $(".education-entry:last").append(HTMLschoolDates.replace("%data%", education.schools[edu].dates));
+            $(".education-entry:last").append(HTMLschoolName.replace("%data%", education.schools[edu].name+HTMLschoolDegree.replace("%data%", education.schools[edu].degree)).replace("#", education.schools[edu].url));
+
+            $(".education-entry:last").append(HTMLschoolDates.replace("%data%", education.schools[edu].date));
             $(".education-entry:last").append(HTMLschoolLocation.replace("%data%", education.schools[edu].location));
             for (var major in education.schools[edu].majors) {
                 $(".education-entry:last").append(HTMLschoolMajor.replace("%data%", education.schools[edu].majors[major]));
