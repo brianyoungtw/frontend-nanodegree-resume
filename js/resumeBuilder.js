@@ -1,38 +1,26 @@
-// Name
-function displayName() {
-    var formattedName = HTMLheaderName.replace("%data%", "Brian Young");
-    var formattedRole = HTMLheaderRole.replace("%data%", "Rule breaker");
-
-    $("#header").prepend(formattedRole);
-    $("#header").prepend(formattedName);
-}
-displayName();
+'use strict';
 
 // bio
 var bio = {
     "name": "Brian Young",
     "role": "Rule breaker",
     "contacts": {
-        "mobile": HTMLmobile.replace("%data%", "控巴控控"),
-        "email": HTMLemail.replace("%data%", "wrongemail@gmail.com"),
-        "github": HTMLgithub.replace("%data%", "brianyoungtw"),
-        "twitter": HTMLtwitter.replace("%data%", "brianyoungtw"),
-        "blog": HTMLblog.replace("%data%", "brianyoungtw.blogspot.tw/"),
-        "location": HTMLlocation.replace("%data%", "Taipei"),
+        "mobile": "控巴控控",
+        "email": "wrongemail@gmail.com",
+        "github": "brianyoungtw",
+        "twitter": "brianyoungtw",
+        "location": "Taipei",
+        "blog": "brianyoungtw.blogspot.tw/"
     },
-    "welcomeMessage": HTMLwelcomeMsg.replace("%data%", "Hi from inside your screen!"),
+    "welcomeMessage": "Hi from inside your screen!",
     "skills": ["Being bad-ass", "Breathing", "Having fun", "Staring at you from inside your screen"],
-    "bioPic": HTMLbioPic.replace("%data%", "images/Brian_pic.jpg"),
+    "bioPic": "images/Brian_pic.jpg",
     //display
     "display": function() {
-        $("#topContacts").append(bio.contacts.mobile);
-        $("#topContacts").append(bio.contacts.email);
-        $("#topContacts").append(bio.contacts.twitter);
-        $("#topContacts").append(bio.contacts.github);
-        $("#topContacts").append(bio.contacts.blog);
-        $("#topContacts").append(bio.contacts.location);
-        $("#header").append(bio.bioPic);
-        $("#header").append(bio.welcomeMessage);
+    	$("#header").prepend(HTMLheaderName.replace("%data%", "Brian Young"),HTMLheaderRole.replace("%data%", "Rule breaker"));
+
+        $("#topContacts").append(HTMLmobile.replace("%data%", bio.contacts.mobile),HTMLemail.replace("%data%", bio.contacts.email),HTMLtwitter.replace("%data%", bio.contacts.twitter),HTMLgithub.replace("%data%", bio.contacts.github),HTMLblog.replace("%data%", bio.contacts.blog),HTMLlocation.replace("%data%", bio.contacts.location));
+        $('#header').append(HTMLbioPic.replace("%data%", bio.bioPic),HTMLwelcomeMsg.replace("%data%", bio.welcomeMessage));
 
         if (bio.skills.length > 0) {
             $("#header").append(HTMLskillsStart);
@@ -45,6 +33,7 @@ var bio = {
             formattedSkills = HTMLskills.replace("%data%", bio.skills[3]);
             $("#skills").append(formattedSkills);
         }
+        $("#footerContacts").append(HTMLmobile.replace("%data%", bio.contacts.mobile),HTMLemail.replace("%data%", bio.contacts.email),HTMLtwitter.replace("%data%", bio.contacts.twitter),HTMLgithub.replace("%data%", bio.contacts.github),HTMLblog.replace("%data%", bio.contacts.blog),HTMLlocation.replace("%data%", bio.contacts.location));
     }
 };
 bio.display();
@@ -53,25 +42,25 @@ bio.display();
 var work = {
     "jobs": [{
         "employer": "The Future of Learning",
-        "url": "https://www.facebook.com/groups/EdTech.NewEdWays/",
         "title": "掃地僧",
-        "dates": "Mar.2015~current",
         "location": "Taipei",
-        "description": "The first edtech community in Taiwan - Let's make learning exciting!"
+        "dates": "Mar.2015~current",
+        "description": "The first edtech community in Taiwan - Let's make learning exciting!",
+		"url": "https://www.facebook.com/groups/EdTech.NewEdWays/"
     }, {
         "employer": "EdSurge",
-        "url": "https://www.linkedin.com/in/brian-young-12b64331",
         "title": "Analyst / Sales Associate intern",
-        "dates": "Aug.2015~Dec.2015",
         "location": "San Francisco",
-        "description": "dummy text"
+        "dates": "Aug.2015~Dec.2015",
+        "description": "dummy text",
+        "url": "https://www.linkedin.com/in/brian-young-12b64331"
     }, {
         "employer": "IBM Taiwan",
-        "url": "https://www.linkedin.com/in/brian-young-12b64331",
         "title": "Sales Representative / Consultant",
-        "dates": "Apr.2013~Feb.2015",
         "location": "Taipei / Hsinchu",
-        "description": "dummy text"
+        "dates": "Apr.2013~Feb.2015",
+        "description": "dummy text",
+        "url": "https://www.linkedin.com/in/brian-young-12b64331"
     }],
     "display": function() {
         for (var job in work.jobs) {
@@ -97,39 +86,45 @@ work.display();
 // projects
 var projects = {
     "projects": [{
-        "name": "The Future of Learning",
+        "title": "The Future of Learning",
         "dates": "Mar.2015-Current",
         "description": "Come join in the conversation at the first edtech community in Taiwan!",
-        "image": "./images/web_dev.jpg",
+        "images": ["./images/fol.jpg","./images/web_dev.jpg"],
         "url": "https://www.facebook.com/groups/EdTech.NewEdWays/",
         "other": ""
     }, {
-        "name": "Hayao Miyazaki(宮崎駿) fan project",
+        "title": "Hayao Miyazaki(宮崎駿) fan project",
         "dates": "TBD",
         "description": "Love his animations and music!",
-        "image": "./images/dodoro.jpeg",
+        "images": ["./images/dodoro.jpeg"],
         "url": "",
         "other": ""
     }, {
-        "name": "The happy project",
+        "title": "The happy project",
         "dates": "Mar.2016",
         "description": "Please play the song below - 'Ode to joy' while singing along using these lyrics: <br></br><p>All my clients drive me crazy</p><p>never show no guts at all</p><p>For the peanuts that they pay me</p><p>they get logos 10 feet tall</p><p>Want to see three new directions</p><p>for tomorrow’s drop dead line</p><p>Picks the worst and mixes sections </p><p>we wind up with Frankenstein.<br></br></p>",
-        "image": "",
+        "images": [],
         "url": "http://www.brianyoungtw.com",
         "other": ""
     }],
     "display": function() {
         for (var project in projects.projects) {
             $("#projects").append(HTMLprojectStart);
-            $(".project-entry:last").append(HTMLprojectTitle.replace("%data%", projects.projects[project].name).replace("#", projects.projects[project].url));
+            $(".project-entry:last").append(HTMLprojectTitle.replace("%data%", projects.projects[project].title).replace("#", projects.projects[project].url));
             $(".project-entry:last").append(HTMLprojectDates.replace("%data%", projects.projects[project].dates));
             $(".project-entry:last").append(HTMLprojectDescription.replace("%data%", projects.projects[project].description));
-            $(".project-entry:last").append(HTMLprojectImage.replace("%data%", projects.projects[project].image));
-            $(".project-entry:last").append(projects.projects[project].other);
-        }
+            projects.projects[project].images.forEach(function(val) {
+            	$(".project-entry:last").append(HTMLprojectImage.replace("%data%", val));
+            });
+        };
         $(".project-entry:last").append(HTMLaudio);
     }
 };
+var array = ["c","d"];
+array.forEach(function(val){
+	console.log(val);
+});
+
 projects.display();
 
 // education
@@ -139,27 +134,27 @@ var education = {
         "location": "Hsinchu, Taiwan",
         "degree": "B.S.",
         "majors": ["Quantitative Finance"],
-        "dates": "2008 - 2011",
+        "date": "2008 - 2011",
         "url": "http://www.qf.nthu.edu.tw/bin/home.php?Lang=en"
     }, {
         "name": "Universitaet Tuebingen",
         "location": "Tuebingen, Germany",
         "degree": "Exchange student",
         "majors": ["Economics", "BA"],
-        "dates": "2010",
+        "date": "Sep. 2010 - Feb. 2011",
         "url": "https://www.uni-tuebingen.de/"
     }, {
         "name": "Zhejiang University",
         "location": "Zhejiang, China",
         "degree": "Exchange student",
         "majors": ["Economics"],
-        "dates": "2009",
+        "date": "Jul. 2009 - Sep. 2009",
         "url": "http://www.zju.edu.cn/english/"
     }, ],
     "onlineCourses": [{
         "title": "Front End Web Dev. Nanodegree",
         "school": "Udacity",
-        "dates": "Feb. 2016 - Current",
+        "date": "Feb. 2016 - Current",
         "schoolUrl": "https://www.udacity.com/",
         "url": "https://www.udacity.com/course/front-end-web-developer-nanodegree--nd001"
     }],
@@ -181,7 +176,7 @@ var education = {
             $("#education").append(HTMLschoolStart);
             $(".education-entry:last").append(HTMLonlineTitle.replace("%data%", education.onlineCourses[edu].title).replace("#", education.onlineCourses[edu].schoolUrl));
             $(".education-entry:last").append(HTMLonlineSchool.replace("%data%", education.onlineCourses[edu].school));
-            $(".education-entry:last").append(HTMLonlineDates.replace("%data%", education.onlineCourses[edu].dates));
+            $(".education-entry:last").append(HTMLonlineDates.replace("%data%", education.onlineCourses[edu].date));
             $(".education-entry:last").append(HTMLonlineURL.replace("%data%", education.onlineCourses[edu].url));
         }
     }
@@ -190,14 +185,3 @@ education.display();
 
 // Map
 $("#mapDiv").append(googleMap);
-
-// Footer Contacts
-var footer = {
-    "display": function() {
-        $("#footerContacts").append(bio.contacts.mobile);
-        $("#footerContacts").append(bio.contacts.email);
-        $("#footerContacts").append(bio.contacts.twitter);
-        $("#footerContacts").append(bio.contacts.github);
-    }
-};
-footer.display();
