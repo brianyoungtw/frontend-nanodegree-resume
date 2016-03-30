@@ -156,9 +156,7 @@ var education = {
         for (var edu in education.schools) {
             $("#education").append(HTMLschoolStart);
             $(".education-entry:last").append(HTMLschoolName.replace("%data%", education.schools[edu].name+HTMLschoolDegree.replace("%data%", education.schools[edu].degree)).replace("#", education.schools[edu].url));
-
-            $(".education-entry:last").append(HTMLschoolDates.replace("%data%", education.schools[edu].date));
-            $(".education-entry:last").append(HTMLschoolLocation.replace("%data%", education.schools[edu].location));
+            $(".education-entry:last").append(HTMLschoolDates.replace("%data%", education.schools[edu].date),HTMLschoolLocation.replace("%data%", education.schools[edu].location));
             for (var major in education.schools[edu].majors) {
                 $(".education-entry:last").append(HTMLschoolMajor.replace("%data%", education.schools[edu].majors[major]));
             }
@@ -167,10 +165,8 @@ var education = {
         $("#education").append(HTMLonlineClasses);
         for (edu in education.onlineCourses) {
             $("#education").append(HTMLschoolStart);
-            $(".education-entry:last").append(HTMLonlineTitle.replace("%data%", education.onlineCourses[edu].title).replace("#", education.onlineCourses[edu].schoolUrl));
-            $(".education-entry:last").append(HTMLonlineSchool.replace("%data%", education.onlineCourses[edu].school));
-            $(".education-entry:last").append(HTMLonlineDates.replace("%data%", education.onlineCourses[edu].date));
-            $(".education-entry:last").append(HTMLonlineURL.replace("%data%", education.onlineCourses[edu].url));
+            $(".education-entry:last").append(HTMLonlineTitle.replace("%data%", education.onlineCourses[edu].title+HTMLonlineSchool.replace("%data%", education.onlineCourses[edu].school)).replace("#", education.onlineCourses[edu].schoolUrl));
+            $(".education-entry:last").append(HTMLonlineDates.replace("%data%", education.onlineCourses[edu].date),HTMLonlineURL.replace("%data%", education.onlineCourses[edu].url));
         }
     }
 };
